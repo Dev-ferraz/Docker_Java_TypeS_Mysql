@@ -1,0 +1,64 @@
+version: "3.9"  # versão mais atual do Compose
+
+services:
+  # ==============================
+  # Banco de Dados MySQL
+  # ==============================
+  mysql_container:
+    image: mysql:8.0
+    container_name: mysql_container_teste_icaro
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gerenciamento_usuarios_TF
+      MYSQL_USER: user
+      MYSQL_PASSWORD: senha123
+    ports:
+      - "3308:3306"
+    networks:
+      - minha_rede
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==============================
+  # Backend Java/Spring Boot
+  # ==============================
+  cadastro_conexao:
+    build:
+      context: .                            # raiz do projeto, pois pom.xml está aqui
+      dockerfile: Docker_backend/Dockerfile
+    container_name: cadastro_conexao_teste_icaro
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_container:3306/gerenciamento_usuarios_TF
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: senha123
+      SPRING_MAIL_USERNAME: dev.ferraz86@gmail.com
+      SPRING_MAIL_PASSWORD: "wile wzmd ejht halw"
+    depends_on:
+      mysql_container:
+        condition: service_healthy
+    networks:
+      - minha_rede
+
+  # ==============================
+  # Frontend Vite/TypeScript
+  # ==============================
+  frontend:
+    build:
+      context: ./Docker_frontend          # pasta do frontend
+      dockerfile: Dockerfile.frontend
+    container_name: frontend_icaro
+    ports:
+      - "5173:5173"
+    networks:
+      - minha_rede
+    stdin_open: true
+    tty: true
+
+networks:
+  minha_rede:
+    driver: bridge

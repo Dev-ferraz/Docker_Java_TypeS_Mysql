@@ -1,0 +1,26 @@
+# ==============================
+# Frontend Node/Vite
+# ==============================
+# Usando Node 22 LTS para garantir compatibilidade com Vite >=7
+FROM node:22-alpine
+
+# Definir diretório de trabalho
+WORKDIR /app
+
+# Instalar dependências do sistema
+RUN apk add --no-cache python3 make g++ bash git
+
+# Copiar package.json e package-lock.json
+COPY package*.json ./
+
+# Instalar dependências do projeto
+RUN npm install --legacy-peer-deps
+
+# Copiar todo o código fonte
+COPY . .
+
+# Expor a porta do Vite
+EXPOSE 5173
+
+# Comando para rodar o Vite em modo desenvolvimento aceitando conexões externas
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
