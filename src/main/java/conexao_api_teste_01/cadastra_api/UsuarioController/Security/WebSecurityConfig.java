@@ -48,8 +48,8 @@ public class WebSecurityConfig {
                     "/", "/index.html", "/favicon.ico",
                     "/static/**", "/assets/**", "/Components_Js/**", "/css/**",
                     "/Components_style_css/**", "/Components_imgs_site/**",
-                    "/API_html/**",
-                    "/PG_workspace/**",
+                    "/api_html/**",
+                    "/pg_workspace/**",
                     "/usuario/**",
                     "/auth/login",
                     "/auth/validarToken"

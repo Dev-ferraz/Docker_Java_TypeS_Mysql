@@ -170,7 +170,7 @@ public boolean autenticar(String email, String senha) {
         token.setDataExpiracao(Instant.now().plusSeconds(TOKEN_EXPIRACAO_SEGUNDOS));
         resetSenhaTokenRepository.save(token);
 
-       String url = "http://localhost:5174/API_html/05_PG_redefinirSenha.html?token=" + token.getToken();
+       String url = "http://localhost:5174/api_html/05_pg_redefinirSenha.html?token=" + token.getToken();
 
         String mensagem = String.format(
             "Olá %s,\n\nClique no link abaixo para redefinir sua senha:\n%s\n\nEste link expira em 30 minutos.",
