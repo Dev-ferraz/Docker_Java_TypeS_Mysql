@@ -27,7 +27,32 @@ A aplicação fornece endpoints REST para cadastro, login com **JWT**, envio de 
 - **Envio de e-mails:** Spring Boot Starter Mail  
 - **Templates:** Thymeleaf  
 - **Banco de Teste:** H2 Database  
-- **Ferramenta de Build:** Maven Compiler Plugin  
+- **Ferramenta de Build:** Maven Compiler Plugin
+  
+
+🔗 Download sites:
+ 
+👉 Site Java (JDK 21.0.4.7-hotspot)
+https://learn.microsoft.com/en-us/java/openjdk/download?utm_source=chatgpt.com
+
+
+👉 Site Spring Boot 3.3.4
+https://spring.io/projects/spring-framework?utm_source=chatgpt.com
+
+
+👉 Site Maven 3.9.8
+https://maven.apache.org/download.cgi?utm_source=chatgpt.com
+
+
+👉 Site DBeaver
+https://dbeaver.io/download/?utm_source=chatgpt.com
+
+
+👉 Site MySQL 8.0
+https://dev.mysql.com/downloads/installer/?utm_source=chatgpt.com
+
+👉 direto docker:
+ https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe
 
 
 ### 🐬 Banco de Dados MySQL (via DBeaver)
@@ -43,22 +68,25 @@ O projeto utiliza **MySQL 8.0** como banco de dados principal, que pode ser gere
 1. Abrir o DBeaver e clicar em **Database → New Database Connection**.  
 2. Selecionar **MySQL**.  
 3. Preencher os campos:
-   - **Host:** `localhost`  
-   - **Porta:** `3308`  
-   - **Database:** `gerenciamento_usuarios_TF`  
-   - **Username:** `root`  
-   - **Password:** `root`  
+- **Host:** `localhost`  
+- **Porta:** `3308`  
+- **Database:** `gerenciamento_usuarios_TF`  
+- **Username:** `root`  
+- **Password:** `root`  
 4. Testar conexão e salvar.  
 
-Após isso, você poderá navegar pelas tabelas, executar queries SQL e gerenciar os dados do projeto diretamente pelo DBeaver.
+ Após isso, você poderá navegar pelas tabelas, executar queries SQL e gerenciar os dados do projeto diretamente pelo DBeaver.
+
 
 
 ### 🐳 Infraestrutura
 - **Docker** — criação de containers isolados  
 - **Docker Compose** — orquestração dos serviços  
 - **Git / GitHub** — versionamento e hospedagem de código  
-- **GitHub Actions (opcional)** — pipeline CI/CD automatizado  
+- **GitHub Actions (opcional)** — pipeline CI/CD automatizado
+
 ---
+
 ### 💻 Comando para rodar o backend (Docker) na raiz do projeto
 ```bash
 # 1. Gerar o novo JAR com as alterações, ignorando os testes
